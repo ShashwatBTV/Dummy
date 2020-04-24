@@ -21,20 +21,23 @@ public class Employee {
         request = new RequestMethod(baseURI);
     }
 
-//    public void getAllEmployee() {
-//        JsonPath path = request.callGETAll(propSet.getAllEmployees());
-//        //path.prettyPrint();
-//        ArrayList allEmployees = path.get("data");
-//        for(int i=0;i<allEmployees.size();i++){
-//            Map employeeDetail = (Map)allEmployees.get(i);
-//            System.out.println(employeeDetail.get("id")+" "+employeeDetail.get("employee_name")
-//                +" "+employeeDetail.get("employee_salary")+" "+employeeDetail.get("employee_age"));
-//        }
-//    }
+    public void getAllEmployee() {
+        JsonPath path = request.callGETAll(propSet.getAllEmployees());
+        //path.prettyPrint();
+        ArrayList allEmployees = path.get("data");
+        for(int i=0;i<allEmployees.size();i++){
+            Map employeeDetail = (Map)allEmployees.get(i);
+            System.out.println(employeeDetail.get("id")+" "+employeeDetail.get("employee_name")
+                +" "+employeeDetail.get("employee_salary")+" "+employeeDetail.get("employee_age"));
+        }
+    }
 
     public void getEmployeeById(String id){
         JsonPath path = request.callGET(propSet.getEmployeeById(),id);
-        path.prettyPrint();
+        //path.prettyPrint();
+        Map employeeDetail = (Map)path.get("data");
+        System.out.println(employeeDetail.get("id")+" "+employeeDetail.get("employee_name")
+                +" "+employeeDetail.get("employee_salary")+" "+employeeDetail.get("employee_age"));
     }
 
     public String addEmployee(){
@@ -49,6 +52,6 @@ public class Employee {
     public void updateEmployee(String id){
         JSONObject requestParams = propSet.getEmployeeDetails();
         JsonPath path = request.callPUT(headers,propSet.updateEmployee(),id, requestParams);
-        path.prettyPrint();
+        //path.prettyPrint();
     }
 }

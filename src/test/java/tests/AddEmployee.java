@@ -1,7 +1,6 @@
 package tests;
 
 import APIRepo.Employee;
-import io.restassured.RestAssured;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.io.BufferedReader;
@@ -23,14 +22,19 @@ public class AddEmployee {
 
     @Test
     public void getAllEmployees(){
-        //employee.getAllEmployee();
-        employee.getEmployeeById("2");
-        //employee.addEmployee();
+        employee.getAllEmployee();
     }
 
-//    @Test
-//    public void addNewEmployee(){
-//        String newEmployeeID = employee.addEmployee();
-//        employee.getEmployeeById(newEmployeeID);
-//    }
+    @Test
+    public void addNewEmployee(){
+        String newEmployeeID = employee.addEmployee();
+        employee.getEmployeeById(newEmployeeID);
+    }
+
+    @Test
+    public void updateEmployee(){
+        //employee to be updated can be picked by reading id from properties file. To-do
+        employee.updateEmployee("2");
+        employee.getEmployeeById("2");
+    }
 }

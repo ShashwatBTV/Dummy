@@ -38,9 +38,9 @@ public class PropertySetter {
     }
     public JSONObject getEmployeeDetails(){
         JSONObject employeeDetails = new JSONObject();
-        employeeDetails.put("employee_name",prop.getProperty("Name"));
-        employeeDetails.put("employee_salary",prop.getProperty("Salary"));
-        employeeDetails.put("employee_age",prop.getProperty("Age"));
+        employeeDetails.put("name",prop.getProperty("Name"));
+        employeeDetails.put("salary",prop.getProperty("Salary"));
+        employeeDetails.put("age",prop.getProperty("Age"));
         return employeeDetails;
     }
     public String updateEmployee(){
