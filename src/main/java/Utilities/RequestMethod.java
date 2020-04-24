@@ -14,31 +14,31 @@ import static io.restassured.RestAssured.given;
 public class RequestMethod {
 
     String baseURI;
-    RequestSpecBuilder requestSpecBuilder;
-    RequestSpecification requestSpecification;
+//    RequestSpecBuilder requestSpecBuilder;
+    public static RequestSpecification requestSpecification;
     public RequestMethod(String baseURI){
         this.baseURI = baseURI;
-        requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecification = new RequestSpecBuilder().build();
+//        requestSpecBuilder = new RequestSpecBuilder();
     }
 
-    public JsonPath callGETAll(String API) {
-        requestSpecBuilder.setBaseUri(baseURI);
-        requestSpecBuilder.setBasePath(API);
-        requestSpecification = requestSpecBuilder.build();
-        Response response = given().spec(requestSpecification).get();
-        String responseString = response.getBody().asString();
-        JsonPath path = new JsonPath(responseString);
-        return path;
-    }
-    public JsonPath callGET(String API, String id) {
+//    public JsonPath callGETAll(String API) {
+//        requestSpecBuilder.setBaseUri(baseURI);
+//        requestSpecBuilder.setBasePath(API);
+//        requestSpecification = requestSpecBuilder.build();
+//        Response response = given().spec(requestSpecification).get();
+//        String responseString = response.getBody().asString();
+//        JsonPath path = new JsonPath(responseString);
+//        return path;
+//    }
+    public JsonPath callGET(String API,String id) {
 //        requestSpecBuilder.setBaseUri(baseURI);
 //        requestSpecBuilder.addPathParam("id",id);
 //        requestSpecBuilder.setBasePath(API);
-        requestSpecification = requestSpecBuilder.build();
         requestSpecification.baseUri(baseURI);
         requestSpecification.pathParam("id",id);
         requestSpecification.basePath(API);
-        requestSpecification = requestSpecBuilder.build();
+//        requestSpecification = requestSpecBuilder.build();
         Response response = given().spec(requestSpecification).get();
         String responseString = response.getBody().asString();
         JsonPath path = new JsonPath(responseString);

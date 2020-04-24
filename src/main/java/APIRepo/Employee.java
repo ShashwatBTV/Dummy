@@ -21,16 +21,16 @@ public class Employee {
         request = new RequestMethod(baseURI);
     }
 
-    public void getAllEmployee() {
-        JsonPath path = request.callGETAll(propSet.getAllEmployees());
-        //path.prettyPrint();
-        ArrayList allEmployees = path.get("data");
-        for(int i=0;i<allEmployees.size();i++){
-            Map employeeDetail = (Map)allEmployees.get(i);
-            System.out.println(employeeDetail.get("id")+" "+employeeDetail.get("employee_name")
-                +" "+employeeDetail.get("employee_salary")+" "+employeeDetail.get("employee_age"));
-        }
-    }
+//    public void getAllEmployee() {
+//        JsonPath path = request.callGETAll(propSet.getAllEmployees());
+//        //path.prettyPrint();
+//        ArrayList allEmployees = path.get("data");
+//        for(int i=0;i<allEmployees.size();i++){
+//            Map employeeDetail = (Map)allEmployees.get(i);
+//            System.out.println(employeeDetail.get("id")+" "+employeeDetail.get("employee_name")
+//                +" "+employeeDetail.get("employee_salary")+" "+employeeDetail.get("employee_age"));
+//        }
+//    }
 
     public void getEmployeeById(String id){
         JsonPath path = request.callGET(propSet.getEmployeeById(),id);
