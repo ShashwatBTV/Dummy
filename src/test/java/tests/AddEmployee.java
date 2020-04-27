@@ -1,6 +1,7 @@
 package tests;
 
 import APIRepo.Employee;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.io.BufferedReader;
@@ -10,6 +11,7 @@ import java.util.Properties;
 public class AddEmployee {
 
     Employee employee;
+    boolean stepRunStatus;
 
     @BeforeTest
     public void setBaseURI() throws Exception{
@@ -22,19 +24,24 @@ public class AddEmployee {
 
     @Test
     public void getAllEmployees(){
-        employee.getAllEmployee();
+        stepRunStatus = employee.getAllEmployee();
+        Assert.assertEquals(stepRunStatus, true,"Data not found");
     }
 
     @Test
     public void addNewEmployee(){
         String newEmployeeID = employee.addEmployee();
-        employee.getEmployeeById(newEmployeeID);
+        Assert.assertNotNull(newEmployeeID, "New employee not created");
+        stepRunStatus = employee.getEmployeeById(newEmployeeID);
+        Assert.assertEquals(stepRunStatus, true,"Data not found");
     }
 
     @Test
     public void updateEmployee(){
         //employee to be updated can be picked by reading id from properties file. To-do
-        employee.updateEmployee("2");
-        employee.getEmployeeById("2");
+        stepRunStatus = employee.updateEmployee("2");
+        Assert.assertEquals(stepRunStatus, true,"Data not found");
+        stepRunStatus = employee.getEmployeeById("2");
+        Assert.assertEquals(stepRunStatus, true,"Data not found");
     }
 }
